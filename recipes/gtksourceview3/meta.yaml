@@ -1,0 +1,37 @@
+{% set name = "gtksourceview" %}
+{% set version = "3.24.8" %}
+{% set version_majmin = '.'.join(version.split('.', 2)[:2]) %}
+{% set sha256 = "1e9bb8ff190db705deb916dd23ff681f0e8803aec407bf0fd64c7e615ac436fe" %}
+
+package:
+  name: gtksourceview3  # note customization
+  version: "{{ version }}"
+
+source:
+  fn: {{ name }}-{{ version }}.tar.xz
+  url: http://ftp.gnome.org/pub/gnome/sources/{{ name }}/{{ version_majmin }}/{{ name }}-{{ version }}.tar.xz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script_env:
+    - NJOBS
+
+requirements:
+  build:
+    - pkg-config
+    - gobject-introspection 1.55.*
+    - glib 2.55.*
+    - intltool 0.40.*
+    - libxml2 2.9.8
+    - gtk3 3.22.*
+  run:
+    - gobject-introspection 1.55.*
+    - glib 2.55.*
+    - gtk3 3.22.*
+    - gettext 0.19.*
+
+about:
+  home: http://www.gtk.org/
+  license: LGPL
+  summary: version 3 of the GtkSourceView library

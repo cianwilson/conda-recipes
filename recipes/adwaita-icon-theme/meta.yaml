@@ -1,0 +1,30 @@
+{% set name = "adwaita-icon-theme" %}
+{% set version = "3.28.0" %}
+{% set version_majmin = '.'.join(version.split('.', 2)[:2]) %}
+{% set sha256 = "7aae8c1dffd6772fd1a21a3d365a0ea28b7c3988bdbbeafbf8742cda68242150" %}
+
+package:
+  name: "{{ name }}"
+  version: "{{ version }}"
+
+source:
+  fn: {{ name }}-{{ version }}.tar.xz
+  url: https://icon-theme.freedesktop.org/releases/{{ name }}-{{ version }}.tar.xz
+  url: https://download.gnome.org/sources/{{ name }}/{{ version_majmin }}/{{ name }}-{{ version }}.tar.xz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script_env:
+    - NJOBS
+
+requirements:
+  build:
+    - pkg-config
+    - intltool 0.40.*
+    - libxml2 2.9.8
+    - gettext
+    - librsvg 2.40.*
+    - gtk3 3.22.*
+  run:
+    - librsvg 2.40.*

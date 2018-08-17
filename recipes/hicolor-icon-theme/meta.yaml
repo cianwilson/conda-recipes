@@ -1,0 +1,18 @@
+{% set name = "hicolor-icon-theme" %}
+{% set version = "0.17" %}
+{% set sha256 = "317484352271d18cbbcfac3868eab798d67fff1b8402e740baa6ff41d588a9d8" %}
+
+package:
+  name: "{{ name }}"
+  version: "{{ version }}"
+
+source:
+  fn: {{ name }}-{{ version }}.tar.xz
+  url: https://icon-theme.freedesktop.org/releases/{{ name }}-{{ version }}.tar.xz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script_env:
+    - NJOBS
+

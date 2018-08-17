@@ -1,0 +1,36 @@
+{% set name = "spud" %}
+{% set version = "2.0" %}
+
+package:
+  name: spud
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/FluidityProject/spud.git
+  git_rev: gtk3_python3_merged
+
+build:
+  number: 0
+  has_prefix_files:
+    - bin/diamond
+    - bin/dxdiff
+
+requirements:
+  #build:
+  #  - gobject-introspection 1.55.*
+  #  - glib 2.55.*
+  #  - intltool 0.40.*
+  #  - libxml2 2.9.8
+  #  - gtk3 3.22.*
+  run:
+    - pygobject 3.28.*
+    - gtk3 3.22.*
+    - gtksourceview3 3.24.*
+    - lxml 4.2.*
+    - future 0.16.*
+    - hicolor-icon-theme 0.17
+
+#about:
+#  home: http://www.gtk.org/
+#  license: LGPL
+#  summary: version 3 of the GtkSourceView library
